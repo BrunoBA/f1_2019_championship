@@ -84,7 +84,7 @@
                   {{getTeamDriverByDriverNumber(winner.driver).name}}
                 </td>
                 <td class="text-center">
-                  <input @click="selectFasterLap(selectedRace, winner.driver)" type="radio" />
+                  <input :name="`${selectedRace}_faster`" @click="selectFasterLap(selectedRace, winner.driver)" type="radio" />
                 </td>
                 <td>
                   <button
@@ -176,7 +176,6 @@
 </template>
 
 <script>
-// import store from "./store";
 import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
