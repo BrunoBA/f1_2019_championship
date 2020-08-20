@@ -88,7 +88,7 @@
                 </td>
                 <td>
                   <button
-                    @click="removeDriverOfRace(winner.driver)"
+                    @click="remove(winner.driver)"
                     type="button"
                     class="btn btn-danger btn-sm"
                   >Remove</button>
@@ -165,11 +165,9 @@
             </tbody>
           </table>
         </div>
-      </div>-->
+      </div> -->
       <pre>
-          <!-- {{selectedRace}} -->
-          ({{fasterDriver}})
-          <!-- {{fasterLap}} -->
+        {{results}}
       </pre>
     </div>
   </div>
@@ -207,16 +205,18 @@ export default {
       );
     },
     fasterDriver() {
-      return this.fasterLap.find((driver, index) => this.selectedRace == index);
+      return this.fasterLap;
     },
   },
   methods: {
     ...mapActions(["selectRace", "insertDriverToRace", "removeDriverOfRace"]),
     selectFasterLap(race, driver) {
       this.fasterLap[race] = driver;
-      console.log(this.fasterLap);
-      console.log(this.fasterLap[this.selectedRace]);
     },
+    remove(driverNumber) {
+      // console.log(driverNumber);
+      this.removeDriverOfRace(driverNumber);
+    }
   },
 };
 </script>
